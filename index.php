@@ -4,35 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Pendaftaran</title>
+    <title>Form Registration</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
 </head>
 
 <body>
-    <h1>Form Pendaftaran</h1>
-    <form id="registrationForm" action="process.php" method="POST" enctype="multipart/form-data">
-        <label for="name">Nama Lengkap:</label>
-        <input type="text" id="name" name="name" required minlength="3" maxlength="50">
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="age">Usia:</label>
-        <input type="number" id="age" name="age" required min="1" max="120">
-
-        <label for="gender">Jenis Kelamin:</label>
-        <select id="gender" name="gender" required>
-            <option value="">--Pilih--</option>
-            <option value="Laki-laki">Laki-laki</option>
-            <option value="Perempuan">Perempuan</option>
-        </select>
-
-        <label for="file">Upload File (Teks):</label>
-        <input type="file" id="file" name="file" accept=".txt" required>
-
-        <button type="submit">Kirim</button>
-    </form>
+    <div class="container">
+        <div class="form-card">
+            <h1>Registration</h1>
+            <form id="registrationForm" action="process.php" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input type="text" id="fullName" name="fullName" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="username" name="username" placeholder="Username" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password"
+                        required>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="declaration" name="declaration" required>
+                    <label for="declaration">I hereby declare that the above information is true and correct.</label>
+                </div>
+                <button type="submit" class="submit-btn">Register</button>
+            </form>
+        </div>
+    </div>
 </body>
 
 </html>
