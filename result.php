@@ -1,11 +1,10 @@
 <?php
 session_start();
-if (!isset($_SESSION['result'])) {
-    header("Location: index.php");
-    exit();
+if (!isset($_SESSION['form_data'])) {
+    die("No data found.");
 }
 
-$result = $_SESSION['result'];
+$data = $_SESSION['form_data'];
 ?>
 
 <!DOCTYPE html>
@@ -14,45 +13,48 @@ $result = $_SESSION['result'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hasil Pendaftaran</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Result</title>
 </head>
 
 <body>
-    <h1>Hasil Pendaftaran</h1>
+    <h1>Form Submission Results</h1>
     <table border="1">
         <tr>
-            <th>Nama</th>
-            <td><?= htmlspecialchars($result['name']); ?></td>
+            <th>Field</th>
+            <th>Value</th>
         </tr>
         <tr>
-            <th>Email</th>
-            <td><?= htmlspecialchars($result['email']); ?></td>
+            <td>Full Name</td>
+            <td><?= htmlspecialchars($data['fullName']) ?></td>
         </tr>
         <tr>
-            <th>Usia</th>
-            <td><?= htmlspecialchars($result['age']); ?></td>
+            <td>Username</td>
+            <td><?= htmlspecialchars($data['username']) ?></td>
         </tr>
         <tr>
-            <th>Jenis Kelamin</th>
-            <td><?= htmlspecialchars($result['gender']); ?></td>
+            <td>Email</td>
+            <td><?= htmlspecialchars($data['email']) ?></td>
         </tr>
         <tr>
-            <th>Browser / OS</th>
-            <td><?= htmlspecialchars($result['userAgent']); ?></td>
+            <td>Phone</td>
+            <td><?= htmlspecialchars($data['phone']) ?></td>
+        </tr>
+        <tr>
+            <td>Browser Info</td>
+            <td><?= htmlspecialchars($data['browserInfo']) ?></td>
         </tr>
     </table>
 
-    <h2>Isi File:</h2>
+    <h2>File Contents</h2>
     <table border="1">
         <tr>
-            <th>Baris</th>
-            <th>Konten</th>
+            <th>Line</th>
+            <th>Content</th>
         </tr>
-        <?php foreach ($result['fileRows'] as $index => $row): ?>
+        <?php foreach ($data['fileRows'] as $index => $line): ?>
         <tr>
-            <td><?= $index + 1; ?></td>
-            <td><?= htmlspecialchars($row); ?></td>
+            <td><?= $index + 1 ?></td>
+            <td><?= htmlspecialchars($line) ?></td>
         </tr>
         <?php endforeach; ?>
     </table>
